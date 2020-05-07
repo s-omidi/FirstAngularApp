@@ -1,0 +1,7 @@
+.example-header-image {
+    background-size: cover;
+  }
+
+  .comment-card{
+      box-shadow: none !important;
+  }

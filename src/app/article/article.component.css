@@ -1,0 +1,14 @@
+
+.badgeinfo{
+    padding: 8px 12px;
+    background-color:rgb(221, 68, 241);
+    border-radius: 5px;
+    margin: 5px;
+}
+.badgesuccess{
+    padding:8px 12px;
+    background-color:rgb(10, 216, 72);
+    border-radius: 5px;
+    margin: 5px;
+}
+

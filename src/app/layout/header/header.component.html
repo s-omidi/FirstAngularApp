@@ -1,0 +1,42 @@
+<div style="height: 80vh;">
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>Responsive Navigation</span>
+      <span class="menu-spacer"></span>
+      <div fxShow="true" fxHide.lt-md>
+          <a routerLink="/home" mat-button>home</a>
+        <!-- The following menu items will be hidden on both SM and XS screen sizes -->
+        <a routerLink="/about" mat-button>about</a>
+        <a  routerLink="/about/about-list" mat-button>about-list</a>
+
+        <a  routerLink="/login" mat-button *showAuth="false">Login</a>   
+        <a  (click)="logout()" mat-button *showAuth="true">LogOut</a>    
+        <a  routerLink="/register" mat-button *showAuth="false">register</a>
+        
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <mat-sidenav-container fxFlexFill>
+    <mat-sidenav #sidenav>
+      <mat-nav-list>
+        <a (click)="sidenav.toggle()" href="" mat-list-item>Close</a>
+        <a routerLink="/about" mat-list-item>about</a>
+        <a routerLink="/about/about-list" mat-list-item>about-list</a>
+        <a routerLink="/login" mat-list-item>login</a>
+        <a routerlink="/register" mat-list-item>register</a>
+        
+      </mat-nav-list>
+    </mat-sidenav>
+     <mat-sidenav-content fxFlexFill>      
+     <router-outlet></router-outlet>
+      <app-loader></app-loader>
+
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
+
+

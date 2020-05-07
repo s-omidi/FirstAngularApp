@@ -1,0 +1,31 @@
+<!-- <div class="text-center">
+  <h1>ngx-pagination live demo</h1>
+  <h4><small><a href="https://github.com/michaelbromley/ngx-pagination">GitHub Repo</a></small></h4>
+  <p>A bare-bones demo for your experimenting / bug-reproducing pleasure.</p>
+</div>
+<div class="row">
+  <div class="medium-8 medium-offset-2 columns">
+    <h2 class="subheader"></h2>
+    <ul>
+      <li *ngFor="let item of  article | paginate: config">{{ item.title }}</li>
+    </ul>
+    
+    <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+  </div>
+</div> -->
+
+
+<mat-list *ngIf="article">
+
+  <mat-list-item *ngFor="let item of  article | paginate:{ itemsPerPage:pageSize, currentPage:currentPage,totalItems:totalPage }">
+    <img matListAvatar src='{{item.author.image}}' alt='{{item.title}}'>
+    <h3 matLine> {{item.title}} </h3>
+    <p matLine>
+      <span> {{item.description}} </span>    
+    </p>
+    <a [routerLink]="['/article', item.slug]">more</a>
+    <mat-divider></mat-divider>
+  </mat-list-item>
+ 
+  <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+</mat-list>

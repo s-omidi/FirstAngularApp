@@ -1,0 +1,5 @@
+<button class="btn"  
+  [ngClass]="{'disabled':isSubmited}" (click)="toggleFollowing()">
+  <i class="fa fa-folder"></i>
+  {{author.following?'Unfollowing':'following'}} {{author.username}}
+</button>

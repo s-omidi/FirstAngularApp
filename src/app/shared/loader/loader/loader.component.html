@@ -1,0 +1,22 @@
+<!-- <div class="container" class="progress-loader loading" [hidden]="!loading">
+   
+    <div class="row">
+      <div id="loader">
+          <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="loading"></div>
+      </div>
+    </div>
+  </div>
+   -->
+
+   <div *ngIf="loading" class="overlay">
+    <mat-progress-spinner class="spinner" [color]="color" [mode]="mode" [value]="value">
+    </mat-progress-spinner>
+  </div>

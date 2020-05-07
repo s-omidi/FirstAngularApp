@@ -1,0 +1,22 @@
+<div class="commentSection mt-5 mb-5" *showAuth="true">
+    <app-create-comment [slug]="slug" (emitPass)="EmiteComment($event)"></app-create-comment>
+
+  </div>
+
+<mat-card class="comment-card" *ngFor="let comment of comments">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image" [ngStyle]="{background:'url('+ comment.author.image +')'}" style="background-color: blue"></div>
+      <mat-card-title>{{comment.author.username}}</mat-card-title>    
+      <mat-card-subtitle>{{comment.createdAt | date}}</mat-card-subtitle>
+    </mat-card-header>   
+    <mat-card-content>
+      <p>
+      {{comment.body}}
+      </p>
+    </mat-card-content>
+
+    <mat-card-actions *ngIf="currentUser==comment.author.username">
+        <mat-icon matListIcon (click)="DeleteComment(comment)">delete</mat-icon>      
+    </mat-card-actions>
+    <mat-divider></mat-divider>
+  </mat-card>

@@ -1,0 +1,4 @@
+<button class="btn" (click)="toggleFavorite()" [ngClass]="{'disabled':isSubmiting}">
+<i class="fa fa-folder"></i>
+{{article.favorited?'Unfavorite':'favorite'}} article | count:{{article.favoritesCount}}
+</button>

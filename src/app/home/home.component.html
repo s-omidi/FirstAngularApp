@@ -1,0 +1,39 @@
+
+<div  class="container mt-4"
+  fxLayout="row" fxLayout.xs="column" fxLayout.sm="column"  fxLayoutGap="50px" fxLayoutAlign="center">
+  <div class="content" fxFlex="80%">
+      <nav mat-tab-nav-bar>
+          <a mat-tab-link             
+             [ngClass]="{'active': listConfig.type==='All' && !listConfig.filter.tag}" 
+             (click)="setConfig('All')">
+             All Articles
+          </a>
+          
+          <a mat-tab-link
+           [ngClass]="{'active': listConfig.type==='Feed' && !listConfig.filter.tag}"
+           (click)="setConfig('Feed')">
+            Your Feed
+          </a>
+          <a mat-tab-link *ngIf="listConfig.filter && listConfig.filter.tag" class="active">
+            #{{listConfig.filter.tag}}
+            </a>
+        </nav>
+        <app-article-list [listConfigSubject]="listConfigSubject" ></app-article-list>
+  </div>
+  <div class="side mt-5 " fxFlex="20%" *ngIf="tagList">
+      <mat-card class="example-card">
+          <mat-card-header>
+            <mat-card-title>Tags</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+              <ul class="list-inline">
+                  <li class="list-inline-item" *ngFor="let tag of tagList">
+                      <span class="badge badge-pill badge-primary" (click)="setFilters('All',tag)">{{tag}}</span>
+                  </li>              
+                </ul>
+          </mat-card-content>
+        </mat-card>
+     
+  </div>
+
+</div>

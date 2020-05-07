@@ -1,0 +1,49 @@
+<div fxLayout="row wrap" fxFlexAlign="center" fxLayout.xs="column">
+  <div class="container mt-5">
+      <mat-card-actions *ngIf="article">
+          <app-favorite 
+          [article]="article"
+          (favorited)="onToggleFavorite($event)">
+          </app-favorite>
+          <app-follow
+           [author]="article.author"
+           (following)="onToggleFollowing($event)">
+          </app-follow>    
+        </mat-card-actions>
+    <mat-card>
+      <h1>{{article?.title}}</h1>
+    </mat-card>
+    <mat-card-actions *ngIf="article">
+      <app-favorite 
+      [article]="article"
+      (favorited)="onToggleFavorite($event)">
+      </app-favorite>
+      <app-follow
+       [author]="article.author"
+       (following)="onToggleFollowing($event)">
+      </app-follow>
+
+    </mat-card-actions>
+
+    <p>{{article.description}}</p>
+    <div class="body">
+        {{article.body}}
+    </div>
+    <div class="taglist mt-5 mb-5" *ngIf="article.tagList.length >0">
+      <span class="badge"  *ngFor="let tag of article.tagList;let odd=odd; let even=even" 
+      [ngClass]="{ badgeinfo: odd, badgesuccess: even }"
+      >{{tag}}</span>
+  </div>   
+    <mat-divider></mat-divider>
+
+  
+   <div class="loginSection mt-5 mb-5" *showAuth="false">
+     <p class="center">Login Or Register to create Comment</p>
+     <a routerLink="/login" class="btn btn-default">Login</a>
+     <a routerLink="/register" class="btn btn-default">Register</a>
+   </div>
+
+    <mat-divider></mat-divider>
+    <app-comment-list [slug]="slug"></app-comment-list>
+  </div>
+</div>

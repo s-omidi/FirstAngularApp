@@ -1,0 +1,14 @@
+
+<form [formGroup]="commentForm" (ngSubmit)="onSubmit()">
+ 
+    <div class="form-group">
+      <label for="comment">Comment</label>
+      <textarea matInput placeholder="Leave a comment" formControlName="comment" class="form-control" [ngClass]="{'is-invalid': submitted && f.comment.errors }" ></textarea>
+      <div *ngIf="submitted && f.comment.errors" class="invalid-feedback">
+          <div *ngIf="f.comment.errors.required">comment is required</div>
+      </div>
+  </div>  
+    <div class="form-group">
+        <button [disabled]="loading" class="btn btn-primary">PostComment</button>
+    </div>
+</form>
